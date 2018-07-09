@@ -1,19 +1,24 @@
 module Main exposing (..)
 
+-- CORE
+-- OWN
+
 import Html exposing (Html)
+import User as User exposing (Model, Msg(..), initialModel, update)
 
 
 type alias Model =
-    {}
+    { userModel : User.Model }
 
 
 initialModel : Model
 initialModel =
-    {}
+    { userModel = User.initialModel }
 
 
 type Msg
     = Noop
+    | UserMsg User.Msg
 
 
 main : Program Never Model Msg
@@ -36,6 +41,13 @@ update msg model =
     case msg of
         Noop ->
             ( model, Cmd.none )
+
+        UserMsg userMsg ->
+            let
+                ( updatedModel, cmd ) =
+                    User.update userMsg model.userModel
+            in
+            ( { model | userModel = updatedModel }, Cmd.map UserMsg cmd )
 
 
 subscriptions : Model -> Sub Msg
