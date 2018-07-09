@@ -28,3 +28,8 @@ npm-debug.log
 
 # DB storage
 /data
+
+# Elm build directory
+elm-stuff/
+# Compiled Elm module
+/assets/js/main.js
