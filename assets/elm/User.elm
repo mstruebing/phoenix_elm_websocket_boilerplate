@@ -1,4 +1,8 @@
-module User exposing (Model, Msg(..), initialModel, update)
+module User exposing (Model, Msg(..), initialModel, loginView, update)
+
+import Html exposing (Html, button, div, form, input, text)
+import Html.Attributes exposing (type_)
+import Html.Events exposing (onInput, onSubmit)
 
 
 type alias Model =
@@ -8,8 +12,9 @@ type alias Model =
 
 
 type Msg
-    = ClearPassword
+    = UpdatePassword String
     | UpdateEmail String
+    | NoOp
 
 
 initialModel : Model
@@ -22,8 +27,23 @@ initialModel =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        ClearPassword ->
-            ( { model | password = "" }, Cmd.none )
+        NoOp ->
+            ( model, Cmd.none )
+
+        UpdatePassword password ->
+            ( { model | password = password }, Cmd.none )
 
         UpdateEmail email ->
             ( { model | email = email }, Cmd.none )
+
+
+loginView : Model -> Html Msg
+loginView model =
+    div []
+        [ form
+            [ onSubmit NoOp ]
+            [ input [ type_ "email", onInput UpdateEmail ] []
+            , input [ type_ "password", onInput UpdatePassword ] []
+            , button [ type_ "submit" ] [ text "Login" ]
+            ]
+        ]

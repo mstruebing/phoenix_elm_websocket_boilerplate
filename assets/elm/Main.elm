@@ -1,10 +1,8 @@
 module Main exposing (..)
 
--- CORE
--- OWN
-
-import Html exposing (Html)
-import User as User exposing (Model, Msg(..), initialModel, update)
+import Html exposing (Html, div)
+import Html.Attributes exposing (class)
+import User as User exposing (Model, Msg(..), initialModel, loginView, update)
 
 
 type alias Model =
@@ -57,4 +55,5 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    Html.text "Hello from Elm!"
+    div [ class "elm-app" ]
+        [ Html.map UserMsg (User.loginView model.userModel) ]
