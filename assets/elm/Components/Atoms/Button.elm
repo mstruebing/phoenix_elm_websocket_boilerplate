@@ -1,4 +1,4 @@
-module Components.Button exposing (button)
+module Components.Atoms.Button exposing (button)
 
 import Html exposing (Attribute, Html)
 import Html.Attributes exposing (style)
@@ -7,9 +7,10 @@ import Html.Attributes exposing (style)
 buttonStyle : Attribute msg
 buttonStyle =
     style
-        [ ( "backgroundColor", "red" )
-        , ( "height", "90px" )
-        , ( "width", "100%" )
+        [ ( "padding", "1em" )
+        , ( "backgroundColor", "unset" )
+        , ( "border", "none" )
+        , ( "color", "#fff" )
         ]
 
 

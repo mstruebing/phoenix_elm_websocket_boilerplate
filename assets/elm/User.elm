@@ -1,6 +1,6 @@
 module User exposing (Model, Msg(..), initialModel, loginView, registerView, update)
 
-import Components.Button exposing (button)
+import Components.Atoms.Button exposing (button)
 import Html exposing (Html, div, form, input, text)
 import Html.Attributes exposing (class, placeholder, type_)
 import Html.Events exposing (onInput, onSubmit)
