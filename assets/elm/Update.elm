@@ -1,5 +1,6 @@
 module Update exposing (update)
 
+import Commands exposing (ping)
 import Navigation as Navigation
 import Routing exposing (parse, toPath)
 import Types exposing (Model, Msg(..))
@@ -20,7 +21,7 @@ update msg model =
             ( { model | route = currentRoute }, Cmd.none )
 
         NavigateTo route ->
-            ( model, Cmd.batch [ Navigation.newUrl <| toPath route ] )
+            ( model, Cmd.batch [ Navigation.newUrl <| toPath route, ping model.flags.socketUrl ] )
 
         UserMsg userMsg ->
             let
@@ -28,3 +29,9 @@ update msg model =
                     User.update userMsg model.userModel
             in
             ( { model | userModel = updatedModel }, Cmd.map UserMsg cmd )
+
+        PingSuccess _ ->
+            ( model, Cmd.none )
+
+        PingError _ ->
+            ( model, Cmd.none )

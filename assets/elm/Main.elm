@@ -20,7 +20,7 @@ init flags location =
 
 initialModel : Flags -> Route -> ( Model, Cmd Msg )
 initialModel flags route =
-    ( { userModel = User.initialModel
+    ( { userModel = User.initialModel flags.socketUrl
       , route = route
       , flags = flags
       }
