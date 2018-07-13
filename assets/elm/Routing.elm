@@ -1,7 +1,7 @@
 module Routing exposing (Route(..), parse, toPath)
 
 import Navigation exposing (Location)
-import UrlParser exposing (..)
+import UrlParser exposing (Parser, map, oneOf, parsePath, s, top)
 
 
 type Route
@@ -14,9 +14,9 @@ type Route
 matchers : Parser (Route -> a) a
 matchers =
     oneOf
-        [ map IndexRoute <| s ""
-        , map LoginRoute <| s ""
-        , map RegisterRoute <| s ""
+        [ map IndexRoute top
+        , map LoginRoute <| s "login"
+        , map RegisterRoute <| s "register"
         ]
 
 
