@@ -3,6 +3,7 @@ defmodule PhoenixElmWebsocketBoilerplateWeb.UserSocket do
 
   ## Channels
   # channel "room:*", PhoenixElmWebsocketBoilerplateWeb.RoomChannel
+  channel "room", PhoenixElmWebsocketBoilerplateWeb.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

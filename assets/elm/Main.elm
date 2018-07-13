@@ -3,29 +3,34 @@ module Main exposing (..)
 import Navigation exposing (Location)
 import Routing exposing (Route(..), parse, toPath)
 import Subscriptions exposing (subscriptions)
-import Types exposing (Model, Msg(..))
+import Types exposing (Flags, Model, Msg(..))
 import Update exposing (update)
 import User as User
 import View exposing (view)
 
 
-init : Navigation.Location -> ( Model, Cmd Msg )
-init location =
+init : Flags -> Navigation.Location -> ( Model, Cmd Msg )
+init flags location =
     let
         currentRoute =
             parse location
     in
-    initialModel currentRoute
+    initialModel flags currentRoute
 
 
-initialModel : Route -> ( Model, Cmd Msg )
-initialModel route =
-    ( { userModel = User.initialModel, route = route }, Cmd.none )
+initialModel : Flags -> Route -> ( Model, Cmd Msg )
+initialModel flags route =
+    ( { userModel = User.initialModel
+      , route = route
+      , flags = flags
+      }
+    , Cmd.none
+    )
 
 
-main : Program Never Model Msg
+main : Program Flags Model Msg
 main =
-    Navigation.program UrlChange
+    Navigation.programWithFlags UrlChange
         { init = init
         , view = view
         , update = update
