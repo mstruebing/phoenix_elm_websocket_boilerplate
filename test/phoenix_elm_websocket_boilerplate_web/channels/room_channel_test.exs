@@ -6,13 +6,13 @@ defmodule PhoenixElmWebsocketBoilerplateWeb.RoomChannelTest do
   setup do
     {:ok, _, socket} =
       socket("user_id", %{some: :assign})
-      |> subscribe_and_join(RoomChannel, "room:lobby")
+      |> subscribe_and_join(RoomChannel, "room")
 
     {:ok, socket: socket}
   end
 
   test "ping replies with status ok", %{socket: socket} do
-    ref = push socket, "ping", %{"hello" => "there"}
+    ref = push socket, "room:ping", %{"hello" => "there"}
     assert_reply ref, :ok, %{"hello" => "there"}
   end
 
