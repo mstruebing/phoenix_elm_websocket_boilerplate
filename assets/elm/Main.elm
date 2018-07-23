@@ -1,11 +1,11 @@
 module Main exposing (..)
 
+import Modules.User as User
 import Navigation exposing (Location)
 import Routing exposing (Route(..), parse, toPath)
 import Subscriptions exposing (subscriptions)
 import Types exposing (Flags, Model, Msg(..))
 import Update exposing (update)
-import User as User
 import View exposing (view)
 
 

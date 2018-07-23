@@ -1,10 +1,10 @@
 module Update exposing (update)
 
 import Commands exposing (ping)
+import Modules.User as User
 import Navigation as Navigation
 import Routing exposing (parse, toPath)
 import Types exposing (Model, Msg(..))
-import User as User
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )

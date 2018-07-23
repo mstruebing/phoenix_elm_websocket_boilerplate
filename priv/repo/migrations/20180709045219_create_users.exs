@@ -3,8 +3,9 @@ defmodule PhoenixElmWebsocketBoilerplate.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :email, :string
+      add :email, :string, null: false
       add :password_hash, :string
+      add :is_admin, :boolean, default: false, null: false
 
       timestamps()
     end

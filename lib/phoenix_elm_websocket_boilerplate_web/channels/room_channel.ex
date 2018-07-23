@@ -15,10 +15,16 @@ defmodule PhoenixElmWebsocketBoilerplateWeb.RoomChannel do
     {:reply, {:ok, payload}, socket}
   end
 
+  def handle_in("room:user:register", payload, socket) do
+    {:reply, {:ok, payload}, socket}
+  end
+
   # It is also common to receive messages from the client and
   # broadcast to everyone in the current topic (room:lobby).
   def handle_in("shout", payload, socket) do
-    broadcast socket, "shout", payload
+    if authorized?(payload) do
+      broadcast socket, "shout", payload
+    end
     {:noreply, socket}
   end
 

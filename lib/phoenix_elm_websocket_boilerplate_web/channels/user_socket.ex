@@ -24,6 +24,16 @@ defmodule PhoenixElmWebsocketBoilerplateWeb.UserSocket do
     {:ok, socket}
   end
 
+  def connect(%{"token" => token}, socket) do
+    case Phoenix.Token.verify(socket, "user", token, max_age: 1209600) do
+      {:ok, user_id} ->
+        socket = assign(socket, :user, PhoenixElmWebsocketBoilerplateWeb.Repo.get!(PhoenixElmWebsocketBoilerplateWeb.Accounts.User, user_id))
+        {:ok, socket}
+      {:error, _} ->
+        :error
+    end
+  end
+
   # Socket id's are topics that allow you to identify all sockets for a given user:
   #
   #     def id(socket), do: "user_socket:#{socket.assigns.user_id}"

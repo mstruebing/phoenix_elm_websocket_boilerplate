@@ -1,9 +1,9 @@
 module Types exposing (Flags, Model, Msg(..))
 
 import Json.Encode as JE
+import Modules.User as User
 import Navigation exposing (Location)
 import Routing exposing (Route)
-import User as User
 
 
 type alias Model =
