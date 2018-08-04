@@ -8,9 +8,8 @@ buttonStyle : Attribute msg
 buttonStyle =
     style
         [ ( "padding", "1em" )
-        , ( "backgroundColor", "unset" )
         , ( "border", "none" )
-        , ( "color", "#fff" )
+        , ( "padding", "4px 8px" )
         ]
 
 

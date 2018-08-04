@@ -1,5 +1,3 @@
-/* This file is for your main application css. */
-
 .page {
     max-width: 1200px;
     margin: 0 auto;
@@ -10,4 +8,8 @@
     justify-content: space-around;
     max-width: 90%;
     background-color: #252525;
+}
+
+.user__register__button {
+    background-color: grey;
 }

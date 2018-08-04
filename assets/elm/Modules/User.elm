@@ -131,6 +131,6 @@ registerView model =
             [ input [ type_ "email", onInput UpdateEmail, placeholder "email" ] []
             , input [ type_ "password", onInput UpdatePassword, placeholder "password" ] []
             , input [ type_ "password", onInput UpdatePasswordConfirmation, placeholder "confirm password" ] []
-            , button [ type_ "submit" ] [ text "Login" ]
+            , button [ type_ "submit", class "user__register__button" ] [ text "Login" ]
             ]
         ]
